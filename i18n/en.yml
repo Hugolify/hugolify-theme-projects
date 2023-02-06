@@ -5,3 +5,7 @@ projects:
   title:
     one: Project
     other: Projects
+types:
+  title:
+    one: Type
+    other: Types
