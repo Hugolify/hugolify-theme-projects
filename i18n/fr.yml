@@ -1,0 +1,7 @@
+projects:
+  all: Tous les projets
+  latest: Derniers projets
+  more: Découvrir plus de projets
+  title:
+    one: Projet
+    other: Projets

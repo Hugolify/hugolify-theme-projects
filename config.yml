@@ -1,0 +1,19 @@
+module:
+  mounts:
+    - source: archetypes
+      target: archetypes
+    - source: assets
+      target: assets
+    - source: i18n
+      target: i18n
+    - source: layouts
+      target: layouts
+params:
+  projects:
+    thumbnail:
+      desktop: "414x312"
+      mobile: "300x225"
+      scrollsnap: "240x180"
+    image:
+      desktop: "856x"
+      mobile: "300x"
