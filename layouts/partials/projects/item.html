@@ -1,8 +1,4 @@
 <article class="project" itemscope itemtype="http://schema.org/CreativeWork">
   {{ partial "projects/item/content" . }}
   {{ partial "projects/item/media" . }}
-  {{ $projects_tags := "projects/item/projects_tags.html" }}
-  {{ if templates.Exists ( printf "partials/%s" $projects_tags ) }}
-    {{ partial $projects_tags . }}
-  {{ end }}
 </article>
