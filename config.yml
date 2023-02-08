@@ -17,3 +17,7 @@ params:
     image:
       desktop: "856x"
       mobile: "300x"
+
+# Default
+permalinks:
+  projects: /projects/:year-:slug/
