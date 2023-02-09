@@ -12,14 +12,14 @@
       "dateCreated": {{ . }},
     {{ end }}
 
-    {{ with .Params.types }}
-      {{ $type := partial "GetTaxonomy" (dict "slug" . "taxonomy" "types")  }}
-      {{ with $type }}
+    {{ with .Params.projects_types }}
+      {{ $projects_types := partial "GetTaxonomy" (dict "slug" . "taxonomy" "projects_types")  }}
+      {{ with $projects_types }}
         "articleSection": {{ .Title | plainify | safeHTML }},
       {{ end }}
     {{ end }}
 
-    {{ with .Params.description }}
+    {{ with .Description }}
       "abstract": {{ . | plainify | safeHTML }},
     {{ end }}
 
