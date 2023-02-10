@@ -13,7 +13,7 @@
     {{ end }}
 
     {{ with .Params.projects_types }}
-      {{ $projects_types := partial "GetTaxonomy" (dict "slug" . "taxonomy" "projects_types")  }}
+      {{ $projects_types := partial "func/GetTaxonomy" (dict "slug" . "taxonomy" "projects_types")  }}
       {{ with $projects_types }}
         "articleSection": {{ .Title | plainify | safeHTML }},
       {{ end }}
