@@ -1,12 +1,8 @@
 {{ if isset .Params "images" }}
   <section class="images">
-    {{ $desktop := site.Params.projects.image.desktop | default false }}
-    {{ $mobile := site.Params.projects.image.mobile | default false }}
     {{ with .Params.images }}
       {{ partial "commons/images" (dict
-        "images" .
-        "desktop" $desktop
-        "mobile" $mobile) }}
+        "images" .) }}
     {{ end }}
   </section>
 {{ end }}
