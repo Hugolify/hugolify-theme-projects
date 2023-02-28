@@ -1,8 +1,6 @@
 {{ if isset .Params "images" }}
-  <section class="images">
-    {{ with .Params.images }}
-      {{ partial "commons/images" (dict
-        "images" .) }}
-    {{ end }}
-  </section>
+  {{ with .Params.images }}
+    {{ partial "commons/images" (dict
+      "images" .) }}
+  {{ end }}
 {{ end }}
