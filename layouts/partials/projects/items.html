@@ -1,31 +1,5 @@
-{{ $pages := . }}
-{{ $atf := false }}
-{{ $scrollsnap := false }}
+{{ $dict := . }}
 {{ if reflect.IsMap . }}
-  {{ $pages = .pages }}
-  {{ $atf = .abovethefold }}
-  {{ with .scrollsnap }}
-    {{ $scrollsnap = true }}
-  {{ end }}
+  {{ $dict = (dict "pages" .pages "abovethefold" .abovethefold) }}
 {{ end }}
-
-{{ with $pages }}
-  {{ if gt . 0 }}
-    <div class="projects">
-      {{ range $index, $items := . }}
-        <div>
-          {{ if and ($atf) (eq $index 0) }}
-            {{ .Scratch.Set "notLazy" true }}
-          {{ end }}
-          {{ if $scrollsnap }}
-            {{ .Scratch.Set "scrollsnap" true }}
-          {{ end }}
-          {{ partial "projects/item.html" . }}
-          {{ if $scrollsnap }}
-            {{ .Scratch.Delete "scrollsnap" }}
-          {{ end }}
-        </div>
-      {{ end }}
-    </div>
-  {{ end }}
-{{ end }}
+{{ partial "commons/items" $dict }}
