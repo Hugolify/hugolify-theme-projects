@@ -13,9 +13,9 @@ module:
 params:
   projects:
     thumbnail:
-      desktop: "416x312"
-      mobile: "300x225"
-      scrollsnap: "240x180"
+      desktop: '416x312'
+      mobile: '300x225'
+      scrollsnap: '240x180'
 
 # Default
 permalinks:
