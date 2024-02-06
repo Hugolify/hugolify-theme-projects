@@ -14,6 +14,7 @@ params:
   projects:
     thumbnail:
       desktop: '416x312'
+      desktop_large: '636x1071'
       mobile: '300x225'
       scrollsnap: '240x180'
 
