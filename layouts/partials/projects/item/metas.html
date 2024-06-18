@@ -1,6 +1,6 @@
 <div class="metas">
   <p>
-    {{ partial "commons/time" (dict "date" .Date "format" ":date_long") }}
+    {{ partial "commons/time" (dict "date" .Date "format" "January 2006") }}
     {{ $projects_types := "projects/item/projects_types.html" }}
     {{ if templates.Exists ( printf "partials/%s" $projects_types ) }}
       {{ partial $projects_types . }}
