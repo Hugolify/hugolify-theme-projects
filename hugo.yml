@@ -11,6 +11,9 @@ module:
     - source: layouts
       target: layouts
 params:
+  admin:
+    collections:
+      projects: true
   projects:
     thumbnail:
       desktop: '416x312'
