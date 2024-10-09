@@ -1,13 +1,1 @@
-{{- $desktop := site.Params.projects.thumbnail.desktop | default false -}}
-{{- $mobile := site.Params.projects.thumbnail.mobile | default false -}}
-{{- if .Scratch.Get "large" -}}
-  {{- $desktop = site.Params.projects.thumbnail.desktop_large | default $desktop -}}
-{{- end -}}
-{{- if .Scratch.Get "scrollsnap" -}}
-  {{- $mobile = site.Params.projects.thumbnail.scrollsnap | default false -}}
-{{- end -}}
-{{ partial "commons/item/media.html" (dict
-      "context" .
-      "desktop" $desktop
-      "mobile" $mobile
-    ) }}
+{{ partial "commons/item/media.html" . }}
