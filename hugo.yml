@@ -13,7 +13,8 @@ module:
 params:
   admin:
     collections:
-      projects: true
+      projects:
+        enable: true
   projects:
     thumbnail:
       desktop: '416x312'
