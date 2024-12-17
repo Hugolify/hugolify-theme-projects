@@ -2,5 +2,9 @@
   {{ partial "projects/metas" . }}
   {{ partial "projects/description" . }}
   {{ partial "projects/datas" . }}
+  {{ $projects_tags := "projects/projects_tags.html" }}
+  {{ if templates.Exists ( printf "partials/%s" $projects_tags ) }}
+    {{ partial $projects_tags . }}
+  {{ end }}
   {{ partial "commons/share" . }}
 </div>
