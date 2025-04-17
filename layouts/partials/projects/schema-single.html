@@ -2,7 +2,7 @@
   {
     "@context": "https://schema.org",
     "@type": "CreativeWork",
-    "headline": {{ .Title }},
+    "headline": {{ partial "func/PrepareData.html" .Title }},
 
     {{ with .Params.image }}
       "thumbnailUrl": {{ .src | absURL }},
@@ -20,11 +20,11 @@
     {{ end }}
 
     {{ with .Description }}
-      "abstract": {{ . | plainify | safeHTML }},
+      "abstract": {{ partial "func/PrepareData.html" . }},
     {{ end }}
 
     {{ with .Content }}
-      "description": {{ . | plainify | safeHTML }},
+      "description": {{ partial "func/PrepareData.html" . }},
     {{ end }}
 
     {{ with .Site.Title }}
