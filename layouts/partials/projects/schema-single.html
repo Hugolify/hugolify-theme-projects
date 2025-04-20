@@ -4,32 +4,29 @@
     "@type": "CreativeWork",
     "headline": {{ partial "func/PrepareData.html" .Title }},
 
-    {{ with .Params.image }}
+    {{- with .Params.image }}
       "thumbnailUrl": {{ .src | absURL }},
-    {{ end }}
+    {{ end -}}
 
-    {{ with .Date }}
+    {{- with .Date }}
       "dateCreated": {{ . }},
-    {{ end }}
+    {{ end -}}
 
-    {{ with .Params.projects_types }}
-      {{ $projects_types := partial "func/GetTaxonomy" (dict "slug" . "taxonomy" "projects_types")  }}
-      {{ with $projects_types }}
-        "articleSection": {{ .Title | plainify | safeHTML }},
-      {{ end }}
-    {{ end }}
+    {{- range .GetTerms "projects_types" }}
+      "articleSection": {{ partial "func/PrepareData.html" .Title }},
+    {{ end -}}
 
-    {{ with .Description }}
+    {{- with .Description }}
       "abstract": {{ partial "func/PrepareData.html" . }},
-    {{ end }}
+    {{ end -}}
 
-    {{ with .Content }}
+    {{- with .Content }}
       "description": {{ partial "func/PrepareData.html" . }},
-    {{ end }}
+    {{ end -}}
 
-    {{ with .Site.Title }}
+    {{- with .Site.Title }}
       "author": {{ . }}
-    {{ end }}
+    {{ end -}}
 
   }
 </script>
