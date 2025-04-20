@@ -1,20 +1,24 @@
-{{ with .Params.datas }}
+{{- with .Params.datas }}
   <div class="datas">
     <ul>
-      {{ range . }}
+      {{- range . }}
         <li>
           <dl>
             <dt>{{ partial "func/PrepareHTML.html" .title }}</dt>
             <dd>
-              {{ if in .text "http" }}
-                <a href="{{ .text }}" title="{{ safeHTML (i18n "link.blank_aria" (dict "Title" .text)) }}" target="_blank">{{ partial "func/PrepareHTML.html" .text }}</a>
-              {{ else }}
-                {{ .text }}
-              {{ end }}
+              {{- $text := partial "func/PrepareHTML.html" .text -}}
+              {{- $i18n_text := i18n "link.blank_aria" (dict "Title" $text) -}}
+              {{- if gt (len (findRE `^https?://` .text)) 0 -}}
+                <a href="{{ .text }}" title="{{ safeHTML $i18n_text }}" target="_blank">
+                  {{- $text -}}
+                </a>
+              {{- else -}}
+                {{- $text -}}
+              {{- end -}}
             </dd>
           </dl>
         </li>
-      {{ end }}
+      {{- end }}
     </ul>
   </div>
-{{ end }}
+{{ end -}}
