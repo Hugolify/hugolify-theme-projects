@@ -27,7 +27,12 @@ params:
           - field: isIndex
             value: false
         icon:
-          sveltiacms: space_dashboard
+          bootstrap_icons: grid-1x2
+          iconoir: layout-left
+          lucide: layout-dashboard
+          material_icons: space_dashboard
+          material_symbols: space_dashboard
+          sveltiacms: space_dashboard # legacy
   
   # Images
   projects:
