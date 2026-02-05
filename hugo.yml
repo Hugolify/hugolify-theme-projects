@@ -13,7 +13,8 @@ module:
 
 # Default
 permalinks:
-  projects: /projects/:year-:slug/
+  page:
+    projects: /projects/:year-:slug/
 
 # Params
 params:
