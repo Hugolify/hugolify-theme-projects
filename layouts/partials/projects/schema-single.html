@@ -5,7 +5,9 @@
     "headline": {{ partial "func/PrepareData.html" .Title }},
 
     {{- with .Params.image }}
-      "thumbnailUrl": {{ .src | absURL }},
+      {{- $schemaImage := .src | absURL -}}
+      {{- if templates.Exists "partials/func/GetSchemaImageSrc.html" }}{{ $schemaImage = partial "func/GetSchemaImageSrc.html" .src }}{{ end }}
+      "thumbnailUrl": {{ $schemaImage }},
     {{ end -}}
 
     {{- with .Date }}
