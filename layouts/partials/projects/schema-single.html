@@ -2,9 +2,10 @@
        the site, see func/GetSchemaArticle.html, whose properties all belong
        to CreativeWork. Its images are the featured one and those of the page,
        see func/GetSchemaImages.html. Its date is when the project was made,
-       its types are its genre, its tags its keywords. Each of those
-       taxonomies ships as its own module, and is only read when the site
-       declares it. */ -}}
+       its datas (client, agency, director…) its creditText, see
+       func/GetSchemaDatas.html, its types are its genre, its tags its
+       keywords. Each of those taxonomies ships as its own module, and is only
+       read when the site declares it. */ -}}
 {{- $work := partial "func/GetSchemaArticle.html" (dict "page" . "type" "CreativeWork") -}}
 {{- $work = merge $work (dict "@id" (printf "%s#creativework" .Permalink)) -}}
 {{- with partial "func/GetSchemaImages.html" (dict "page" . "images" .Params.images) -}}
@@ -12,6 +13,9 @@
 {{- end -}}
 {{- with partial "func/GetSchemaDate.html" .Date -}}
   {{- $work = merge $work (dict "dateCreated" .) -}}
+{{- end -}}
+{{- with partial "func/GetSchemaDatas.html" (dict "datas" .Params.datas "format" "text") -}}
+  {{- $work = merge $work (dict "creditText" .) -}}
 {{- end -}}
 {{- with partial "func/GetSchemaTerms.html" (dict "page" . "taxonomy" "projects_types") -}}
   {{- $work = merge $work (dict "genre" .) -}}
