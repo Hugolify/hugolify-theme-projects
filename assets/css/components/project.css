@@ -1,0 +1,7 @@
+/* components/project.css */
+/*
+ * .project remaps the full --item-* API (and the inner --btn-*) onto its
+ * --project-* tokens, so any value can be tuned from project.json without
+ * touching this file.
+ * Usage: <article class="item project">
+ */

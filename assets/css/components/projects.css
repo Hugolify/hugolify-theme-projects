@@ -1,0 +1,12 @@
+/* components/projects.css */
+/*
+ * .projects remaps the full --items-* API onto its --projects-* tokens, so any
+ * value can be tuned from projects.json without touching this file.
+ * Usage: <article class="items projects">
+ */
+@layer components {
+  .projects {
+    --items-min-width: var(--projects-min-width);
+    --items-nav-margin-block-start: var(--projects-nav-margin-block-start);
+  }
+}

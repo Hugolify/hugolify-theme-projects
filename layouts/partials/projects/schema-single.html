@@ -1,34 +1,28 @@
-<script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "CreativeWork",
-    "headline": {{ partial "func/PrepareData.html" .Title }},
+{{- /* Schema.org for a project: a CreativeWork made by the organization behind
+       the site, see func/GetSchemaArticle.html, whose properties all belong
+       to CreativeWork. Its images are the featured one and those of the page,
+       see func/GetSchemaImages.html. Its date is when the project was made,
+       its types are its genre, its tags its keywords. Each of those
+       taxonomies ships as its own module, and is only read when the site
+       declares it. */ -}}
+{{- $work := partial "func/GetSchemaArticle.html" (dict "page" . "type" "CreativeWork") -}}
+{{- $work = merge $work (dict "@id" (printf "%s#creativework" .Permalink)) -}}
+{{- with partial "func/GetSchemaImages.html" (dict "page" . "images" .Params.images) -}}
+  {{- $work = merge $work (dict "image" .) -}}
+{{- end -}}
+{{- with partial "func/GetSchemaDate.html" .Date -}}
+  {{- $work = merge $work (dict "dateCreated" .) -}}
+{{- end -}}
+{{- with partial "func/GetSchemaTerms.html" (dict "page" . "taxonomy" "projects_types") -}}
+  {{- $work = merge $work (dict "genre" .) -}}
+{{- end -}}
+{{- with partial "func/GetSchemaTerms.html" (dict "page" . "taxonomy" "projects_tags") -}}
+  {{- $work = merge $work (dict "keywords" .) -}}
+{{- end -}}
 
-    {{- with .Params.image }}
-      {{- $schemaImage := .src | absURL -}}
-      {{- if templates.Exists "partials/func/GetSchemaImageSrc.html" }}{{ $schemaImage = partial "func/GetSchemaImageSrc.html" .src }}{{ end }}
-      "thumbnailUrl": {{ $schemaImage }},
-    {{ end -}}
+{{- $webpage := partial "func/GetSchemaWebPage.html" (dict
+  "page" .
+  "mainEntity" (dict "@id" (index $work "@id"))
+) -}}
 
-    {{- with .Date }}
-      "dateCreated": {{ . }},
-    {{ end -}}
-
-    {{- range .GetTerms "projects_types" }}
-      "articleSection": {{ partial "func/PrepareData.html" .Title }},
-    {{ end -}}
-
-    {{- with .Description }}
-      "abstract": {{ partial "func/PrepareData.html" . }},
-    {{ end -}}
-
-    {{- with .Content }}
-      "description": {{ partial "func/PrepareData.html" . }},
-    {{ end -}}
-
-    {{- with .Site.Title }}
-      "author": {{ . }}
-    {{ end -}}
-
-  }
-</script>
+{{- partial "commons/jsonld.html" (slice $webpage $work) -}}

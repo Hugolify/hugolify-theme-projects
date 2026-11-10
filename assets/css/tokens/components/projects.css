@@ -1,0 +1,9 @@
+/* Do not edit directly, this file was auto-generated. */
+
+/* projects.css */
+@layer tokens {
+  :root {
+    --projects-min-width: var(--max-width-item);
+    --projects-nav-margin-block-start: var(--spacing-fluid-md);
+  }
+}
