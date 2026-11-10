@@ -11,15 +11,9 @@ module:
     - source: layouts
       target: layouts
 
-# Default
-permalinks:
-  page:
-    projects: /projects/:year-:slug/
-
-# Params
 params:
 
-  # Admin
+  # Hugolify admin
   admin:
     collections:
       projects:
@@ -33,12 +27,18 @@ params:
           lucide: layout-dashboard
           material_icons: space_dashboard
           material_symbols: space_dashboard
-          sveltiacms: space_dashboard # legacy
-  
-  # Images
+        path: "{{year}}/{{slug}}"
+        sortable_fields: [date, title]
+
+  # Image
   projects:
     thumbnail:
       desktop: '416x312'
-      desktop_large: '636x1071'
       mobile: '300x225'
       scrollsnap: '240x180'
+      sizes: 100vw, 50vw, 33vw
+
+# Default
+permalinks:
+  page:
+    projects: /projects/:year-:slug/

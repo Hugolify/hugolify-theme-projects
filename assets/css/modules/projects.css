@@ -1,0 +1,16 @@
+/* css/modules/projects.css — hugolify-theme-projects entry point */
+
+/* Tokens */
+@import '../tokens/projects.css';
+
+/* Components */
+@import '../components/project.css';
+@import '../components/projects.css';
+
+/* Pages */
+@import '../pages/project.css';
+@import '../pages/projects.css';
+
+/* Modules / Taxonomies */
+@import 'projects-tags.css';
+@import 'projects-types.css';
