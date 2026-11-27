@@ -23,6 +23,7 @@ params:
             value: false
         icon:
           bootstrap_icons: grid-1x2
+          hugeicons: DashboardSquare01
           iconoir: layout-left
           lucide: layout-dashboard
           material_icons: space_dashboard
